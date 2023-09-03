@@ -4,6 +4,7 @@ const prisma = require("./prisma");
 const cors = require("cors");
 
 const app = express();
+ViteExpress.config({ mode: "production" })
 
 app.use(cors());
 app.use(express.json());
