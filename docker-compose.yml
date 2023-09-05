@@ -1,0 +1,19 @@
+version: '2.2'
+services:
+  mongodb-server:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+  node-app:
+    restart: always
+    environment:
+      - DB_URL=mongodb://mongodb-server:27017/smsmvp
+    build: 
+      dockerfile: Dockerfile
+      context: ./
+    volumes:
+      - ./:/app/
+    ports:
+      - '5173:5173'
+      - '3000:3000'
